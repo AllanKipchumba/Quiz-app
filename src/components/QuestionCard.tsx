@@ -1,13 +1,13 @@
 import React from "react";
 
-type props = {
+interface props {
   question: string;
   answers: string[];
   callback: any;
   userAnswer: any;
   questionNr: number;
   totalQuestions: number;
-};
+}
 
 export const QuestionCard: React.FC<props> = ({
   question,

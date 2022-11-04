@@ -1,3 +1,4 @@
+import axios from "axios";
 export enum Difficulty {
   EASY = "easy",
   MEDIUM = "medium",
@@ -9,8 +10,13 @@ export const fetchQuizQuestions = async (
   amount: number,
   difficulty: Difficulty
 ) => {
-  const endpoint = `https://opendb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
-  const data = await await (await fetch(endpoint)).json();
+  //   const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
 
-  console.log(data);
+  try {
+    const endpoint = `https://opentdb.com/api.php?amount=${amount}`;
+    const data = await axios.get(endpoint);
+    console.log(data.data);
+  } catch (error) {
+    console.log(error);
+  }
 };
