@@ -5,7 +5,7 @@ interface props {
   question: string;
   answers: string[];
   callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  userAnswer: any;
+  userAnswer: AnswerObject | undefined;
   questionNr: number;
   totalQuestions: number;
 }
@@ -29,7 +29,7 @@ export const QuestionCard: React.FC<props> = ({
         {answers.map((answer) => {
           return (
             <div key={answer}>
-              <button disabled={userAnswer} value={answer} onClick={callback}>
+              <button disabled={!!userAnswer} value={answer} onClick={callback}>
                 <span dangerouslySetInnerHTML={{ __html: answer }} />
               </button>
             </div>
